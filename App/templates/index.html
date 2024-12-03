@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake News Detector</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Body Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, #1f1c2c, #ff6f61); /* Gradient background */
+            color: white;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Form Container */
+        form {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            padding: 40px 30px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1s ease-out;
+            position: relative;
+        }
+
+        /* Avatar Image Styling - Centered Oval */
+        .imgcontainer {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .imgcontainer img {
+            width: 250px; /* Adjust width for the desired size */
+            height: 150px; /* Adjust height to create an oval shape */
+            border-radius: 50%;
+            border: 5px solid #ff6f61;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .imgcontainer img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Title Styling */
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #ff6f61;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+            margin-bottom: 20px;
+        }
+
+        /* Input Styling */
+        input[type=text] {
+            width: calc(100% - 24px);
+            padding: 12px 15px;
+            margin: 15px 0;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        input[type=text]:focus {
+            background: rgba(255, 255, 255, 0.4);
+            color: black;
+        }
+
+        /* Button Styling */
+        button {
+            width: 100%;
+            padding: 15px;
+            margin: 20px 0;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(90deg, #ff6f61, #f7b733);
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 111, 97, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(255, 111, 97, 0.6);
+        }
+
+        /* Animation for form */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 600px) {
+            form {
+                padding: 30px 15px;
+            }
+            .imgcontainer img {
+                width: 200px;
+                height: 120px;
+            }
+            button {
+                font-size: 1rem;
+                padding: 12px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Form for Fake News Prediction -->
+<form id="form_pred" method="post" action="/api">
+    <!-- Avatar Image Section -->
+    <div class="imgcontainer">
+        <img src="/static/indeximage.png" alt="Logo" class="avatar">
+    </div>
+
+    <!-- Title for Fake News Detector -->
+    <h2>Fake News Detector</h2>
+    
+    <!-- Title Input Field -->
+    <label for="title"><b>Title</b></label>
+    <input type="text" placeholder="Enter Title" name="title" required>
+
+    <!-- Author Input Field -->
+    <label for="author"><b>Author</b></label>
+    <input type="text" placeholder="Enter Author" name="author" required>
+
+    <!-- Main Text Input Field -->
+    <label for="maintext"><b>Text</b></label>
+    <input type="text" placeholder="Enter Whole Text" name="maintext" required>
+
+    <!-- Submit Button -->
+    <button type="submit">Predict</button>
+</form>
+
+</body>
+</html>

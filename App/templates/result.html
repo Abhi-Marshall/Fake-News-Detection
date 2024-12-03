@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Body Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, #1f1c2c, #ff6f61);
+            color: white;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Result Container */
+        .result-container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px 30px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* Prediction Text Styling */
+        .prediction-text {
+            color: #f7b733; /* Bright yellow/orange */
+            font-weight: bold;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        /* Result Styling */
+        .result {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        /* Fake Result Styling */
+        .result.fake {
+            color: #f44336; /* Red for Fake */
+        }
+
+        /* Real Result Styling */
+        .result.real {
+            color: #4CAF50; /* Green for Real */
+        }
+
+        /* Button Styling */
+        button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(90deg, #ff6f61, #f7b733);
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 111, 97, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(255, 111, 97, 0.6);
+        }
+
+        /* Slightly Bigger Back Button Styling */
+        .back-button {
+            width: auto;
+            padding: 14px 30px;  /* Slightly larger padding */
+            font-size: 1.2rem;   /* Font size slightly bigger */
+            border-radius: 30px;
+            background: #ff6f61; /* Keep the vibrant color */
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Animation for fading in the result */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 600px) {
+            .result-container {
+                padding: 30px 15px;
+            }
+            .back-button {
+                padding: 12px 26px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="result-container">
+    <p class="prediction-text">Prediction:</p>
+    <p class="result {{ 'real' if prediction == 'real' else 'fake' }}">{{ prediction.capitalize() }}</p> <!-- Dynamically change color based on result -->
+
+    <form action="/">
+        <button type="submit" class="back-button">Back</button>
+    </form>
+</div>
+
+</body>
+</html>
